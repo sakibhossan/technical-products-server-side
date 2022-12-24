@@ -29,7 +29,14 @@ async function run(){
     const product = await productsCollection.findOne(query);
     res.send(product);
    
-   })
+   });
+  // --------Manage Product Delete-------//  
+  app.delete('/products/:id',async(req,res)=>{
+    const id = req.params.id;
+    const query ={_id:Object(id)};
+    const result = await productsCollection.deleteOne(query);
+    res.send(result);
+  })
 
   }
   finally{
